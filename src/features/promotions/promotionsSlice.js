@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 // import { PROMOTIONS } from '../../app/shared/PROMOTIONS';
 import { baseUrl } from '../../app/shared/baseUrl';
-import { mapImageURL} from '../../utils/mapImageURL';
+import { mapImageURL } from '../../utils/mapImageURL';
 
 export const fetchPromotions = createAsyncThunk(
     'promotions/fetchPromotions',
@@ -44,5 +44,11 @@ const promotionsSlice = createSlice({
 export const promotionsReducer = promotionsSlice.reducer;
 
 export const selectFeaturedPromotion = (state) => {
-    return state.promotions.promotionsArray.find((promotion) => promotion.featured);
+    return {
+        featuredItem: state.promotions.promotionsArray.find(
+            (promotion) => promotion.featured
+        ),
+        isLoading: state.promotions.isLoading,
+        errMsg: state.promotions.errMsg
+    };
 };
