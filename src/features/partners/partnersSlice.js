@@ -51,8 +51,7 @@ export const selectAllPartners = (state) => {
 export const selectFeaturedPartner = (state) => {
     return {
        featuredItem: state.partners.partnersArray.find(
-            (partner) => partner.featured
-        ),
+            (partner) => partner.featured),
         isLoading: state.partners.isLoading,
         errMsg: state.partners.errMsg
     };
